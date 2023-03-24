@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 
 public class SumCalculator {
-    @BeforeEach
+
     public int sum(int n) {
         int result;
         if (n == 0) {
