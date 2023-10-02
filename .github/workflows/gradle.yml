@@ -9,18 +9,18 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
-
+    branches: [ "main" ]
+ 
 jobs:
   build:
-
+ 
     runs-on: windows-latest
-
+    permissions:
+      contents: read
+      packages: write
+ 
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -28,4 +28,16 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-
+         
+    - uses: browser-actions/setup-chrome@latest
+    - run: chrome --version     
+ 
+    - name: Build with Gradle
+      run: gradle clean test
+       
+    - name: Archive Rest Results
+      uses: actions/upload-artifact@v3
+      if: success() || failure()
+      with:
+        name: test-results
+        path: GradleReports/emailable-report.html
