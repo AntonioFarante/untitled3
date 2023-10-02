@@ -9,7 +9,7 @@ public class SumCalculator {
         } else {
             result = 0;
             for (int i = 0; i <= n; i++) {
-                result = i;
+                result += i;
             }
         }
         return result;
