@@ -2,13 +2,13 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class SumCalculator {
 
-    public int sum(int n) {
+    public int sum(int m) {
         int result;
-        if (n == 0) {
+        if (m == 0) {
             throw new IllegalArgumentException();
         } else {
             result = 0;
-            for (int i = 0; i <= n; i++) {
+            for (int i = 0; i <= m; i++) {
                 result += i;
             }
         }
